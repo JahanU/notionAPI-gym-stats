@@ -10,6 +10,7 @@ app.use(cors());
 require('dotenv/config'); // Init .env file
 
 const { addStatsRow } = require("./notion")
+const { filterInputs } = require("./helperFunctions")
 
 app.get('/', (req, res) => {
   res.send("Hello World, Landing page!");
@@ -17,16 +18,15 @@ app.get('/', (req, res) => {
 });
 
 app.post('/post-gym-stats', async (req, res) => {
-  console.log(req.body);
-
-  const { exercise, weight, tagName } = req.body; // All Strings
-  let tag = [{ name: tagName }]; // Tags need to be an array of objects (in our case, it will always be length = 1)
+  // { exercise: 'Bench Press', weight: '90', tagName: 'Push' }
+  let { exercise, weight, tag } = req.body; // All Strings 
+  [exercise, weight, tag] = filterInputs(exercise, weight, tag);
 
   try {
     await addStatsRow({
       exercise,
       weight,
-      tags: tag
+      tag
     });
     res.send(req.body);
   } catch (error) {

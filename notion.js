@@ -10,7 +10,8 @@ const NOTION_WEIGHT_ID = '|=UC'; //  'Weight (1S * 10R)': { id: '|=UC', type: 'r
 const NOTION_EXERCISE_ID = 'title'; //  Exercises: { id: 'title', type: 'title', title: {} }
 
 // Notion Page = Page or database entry, as that is also a page!
-function addStatsRow({ exercise, weight, tags }) {
+function addStatsRow({ exercise, weight, tag }) {
+
   try {
     notion.pages.create({
       parent: { database_id: DATABASE_ID },
@@ -39,10 +40,8 @@ function addStatsRow({ exercise, weight, tags }) {
             "start": new Date().toISOString()
           }
         },
-        [NOTION_TAGS_ID]: { // // If we select 1 item, it becomes an object and not array. Must pass in array tho!
-          multi_select: tags.map(tag => {
-            return { name: tag.name }
-          })
+        [NOTION_TAGS_ID]: {
+          multi_select: tag // If we select 1 item, it becomes an object and not array. Must pass in array tho!
         }
       },
     });
@@ -55,7 +54,7 @@ function addStatsRow({ exercise, weight, tags }) {
 // let tagEx = {
 //   name: 'Push',
 // };
-// addStatsRow( { exercise: "LEG DAY", weight: "100KG", tags: [tagEx] } )
+// addStatsRow({ exercise: "LEG DAY", weight: "100KG", tags: [tagEx] })
 
 
 module.exports = { // Export these functions to use in index.js
