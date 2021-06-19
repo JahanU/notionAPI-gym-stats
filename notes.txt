@@ -1,0 +1,44 @@
+// Test on Chrome Console
+// let data = {
+//   "exercise": "YOOOOO",
+//   "weight": "90KG",
+//   "tagNames": ["Push"]
+// }
+// let option = {
+//   method: 'POST',
+//   body: JSON.stringify(data),
+//   headers: { 'Content-Type': 'application/json' }
+// };
+
+// let url = "http://100.77.18.12:3000/post-gym-stats";
+
+// fetch(url, option).then(res => res.json()).then(console.log);
+--
+// Use import for ES6 modules and require for commonJS.
+// The CommonJS (CJS) format is used in Node.js and uses require and module.exports to define dependencies and modules. The npm ecosystem is built upon this format.
+// The ES Module (ESM) format. As of ES6 (ES2015), JavaScript supports a native module format. It uses an export keyword to export a module’s public API and an import keyword to import it.
+const { Client } = require("@notionhq/client"); // import statement cannot be used in embedded scripts unless such script has a type="module"
+--
+async function getTags() {
+  const database = await notion.databases.retrieve({ database_id: DATABASE_ID }); // First get Database
+  if (database) {
+    console.log('Recieved data from Notion');
+    console.log(database);
+    const properties = database.properties;
+    const notionPropsById = notionPropertiesById(properties);
+    let tags = notionPropsById[NOTION_TAGS_ID].multi_select.options;
+    console.log(tags);
+    return tags;
+  }
+  else {
+    console.log('Error accessing Notion API');
+  }
+}
+-
+function notionPropertiesById(properties) {
+  return Object.values(properties).reduce((accObj, currProp) => { // Get the values of properties and reduce it down into a new object
+    const { id, ...rest } = currProp; // From CurrProp, we extract Id and leave the rest into the rest var
+    return { ...accObj, [id]: rest }
+  }, {}) // Default empty object, aka what the accObj begins with
+  // e.g.:   ihHP: { type: 'multi_select', multi_select: { options: [Array] } },
+}
