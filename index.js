@@ -4,7 +4,7 @@ const cors = require('cors') // Enable Cross-origin resource sharing (Access fro
 const app = express();
 // app.use(express.urlencoded({ extended: false })) // parses incoming requests with urlencoded payloads and is based on body-parser.
 
-app.use(express.json()) // Returns middleware that only parses json. The options are // NEEDED for POST/PUT request
+app.use(express.json()) // Returns middleware that only parses json. //  NEEDED for POST/PUT request
 app.use(express.static('client'));
 app.use(cors());
 require('dotenv/config'); // Init .env file

@@ -42,3 +42,5 @@ function notionPropertiesById(properties) {
   }, {}) // Default empty object, aka what the accObj begins with
   // e.g.:   ihHP: { type: 'multi_select', multi_select: { options: [Array] } },
 }
+--
+you dont need body-parser anymore, express comes with a builtin middleware for json body. just use app.use(express.json())
