@@ -1,18 +1,19 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors') // Enable Cross-origin resource sharing (Access from any IP)
 
 const app = express();
 // app.use(express.urlencoded({ extended: false })) // parses incoming requests with urlencoded payloads and is based on body-parser.
+
 app.use(express.json()) // Returns middleware that only parses json. The options are // NEEDED for POST/PUT request
 app.use(express.static('client'));
 app.use(cors());
+require('dotenv/config'); // Init .env file
 
 const { addStatsRow } = require("./notion")
 
-
 app.get('/', (req, res) => {
   res.send("Hello World, Landing page!");
+  console.log("Hello World, Landing page!");
 });
 
 app.post('/post-gym-stats', async (req, res) => {
