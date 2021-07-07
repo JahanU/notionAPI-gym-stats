@@ -37,7 +37,12 @@ function addStatsRow({ exercise, weight, tag }) {
         },
         [NOTION_DATES_ID]: {
           date: {
-            "start": new Date().toISOString()
+            "start": (function () {
+              const date = new Date();
+              date.setHours(date.getHours() + 1);
+              console.log('DATE IS: ', date.toISOString());
+              return date.toISOString();
+            })()
           }
         },
         [NOTION_TAGS_ID]: {
