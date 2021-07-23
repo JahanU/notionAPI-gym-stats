@@ -1,11 +1,12 @@
 function filterInputs(exercise, weight, tag) {
-    exercise = filterExercise(exercise);
+    exercise = filterCamelCase(exercise);
     weight = filterWeight(weight);
+    tag = filterCamelCase(tag);
     tag = filterTag(tag);
     return [exercise, weight, tag];
 }
 
-function filterExercise(exercise) {
+function filterCamelCase(exercise) {
     const words = exercise.split(" ");
     for (let i = 0; i < words.length; i++) {
         words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1);
