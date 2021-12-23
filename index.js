@@ -36,3 +36,5 @@ app.post('/post-gym-stats', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('starting server at..', PORT));
+// Vim testing! - const PORT = process.env.PORT || 3000;
+
