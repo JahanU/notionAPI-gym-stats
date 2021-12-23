@@ -36,6 +36,11 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.form-control.invalid input {
+  background-color: red;
+  opacity: 10%;
+}
+
 .form-control input,
 .form-control select {
   font: inherit;
@@ -77,6 +82,15 @@ button:hover,
 button:active {
   background-color: #33059e;
   border-color: #33059e;
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #3f3f3f;
+  cursor: not-allowed;
 }
 
 .form-actions {

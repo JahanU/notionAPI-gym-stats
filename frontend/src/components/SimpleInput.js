@@ -1,32 +1,43 @@
-import { useRef, useState } from 'react';
+import useInput from '../hooks/use-input';
 
+const validateInput = (value) => {
+  return value.length > 3;
+}
 
 const SimpleInput = (props) => {
 
-  const nameRef = useRef('');
-  const [name, setName] = useState('');
+  const {
+    value: enteredName,
+    valueIsValid: nameIsValid,
+    inputHasError: inputNameHasError,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetName
+  } = useInput(validateInput);
 
-  const nameInputHandler = (e) => {
-    setName(e.target.value);
-  }
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log(name);
-
-    console.log(nameRef.current.value)
+    if (!nameIsValid) return;
+    console.log('all validated, submit: ', enteredName);
+    resetName();
   }
+
+  const nameInputClass = inputNameHasError ? 'form-control invalid' : 'form-control';
 
   return (
     <form onSubmit={submitFormHandler}>
-      <div className='form-control'>
+      <div className={nameInputClass}>
         <label htmlFor='name'>Your Name</label>
         <input
-          ref={nameRef}
-          onChange={nameInputHandler} type='text' id='name' />
+          onChange={nameChangeHandler}
+          onBlur={nameBlurHandler}
+          value={enteredName}
+          type='text' id='name' />
       </div>
+      {inputNameHasError && <p> Form is invalid, try again</p>}
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!nameIsValid}>Submit</button>
       </div>
     </form>
   );
