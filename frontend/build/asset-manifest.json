@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/JahanU/notionAPI-gym-stats/static/css/main.034aedb2.chunk.css",
+    "main.js": "/JahanU/notionAPI-gym-stats/static/js/main.344d3da8.chunk.js",
+    "main.js.map": "/JahanU/notionAPI-gym-stats/static/js/main.344d3da8.chunk.js.map",
+    "runtime-main.js": "/JahanU/notionAPI-gym-stats/static/js/runtime-main.01047545.js",
+    "runtime-main.js.map": "/JahanU/notionAPI-gym-stats/static/js/runtime-main.01047545.js.map",
+    "static/js/2.32b91aa0.chunk.js": "/JahanU/notionAPI-gym-stats/static/js/2.32b91aa0.chunk.js",
+    "static/js/2.32b91aa0.chunk.js.map": "/JahanU/notionAPI-gym-stats/static/js/2.32b91aa0.chunk.js.map",
+    "index.html": "/JahanU/notionAPI-gym-stats/index.html",
+    "static/css/main.034aedb2.chunk.css.map": "/JahanU/notionAPI-gym-stats/static/css/main.034aedb2.chunk.css.map",
+    "static/js/2.32b91aa0.chunk.js.LICENSE.txt": "/JahanU/notionAPI-gym-stats/static/js/2.32b91aa0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.01047545.js",
+    "static/js/2.32b91aa0.chunk.js",
+    "static/css/main.034aedb2.chunk.css",
+    "static/js/main.344d3da8.chunk.js"
+  ]
+}
