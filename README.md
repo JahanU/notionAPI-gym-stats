@@ -9,7 +9,5 @@ Check out the frontend: https://jahanu.github.io/notionAPI-gym-stats/  🏋️
 </div>
 
 
-## References:
-
+### References:
 - https://developers.notion.com/
-- https://www.youtube.com/watch?v=zVfVLBjQuSA
