@@ -5,12 +5,8 @@ const useInput = (validateValue) => {
     const [value, setValue] = useState('');
     const [isTouched, setIsTouched] = useState(false);
 
-    const valueIsValid = value.length > 3;
+    const valueIsValid = validateValue(value);
     const inputHasError = !valueIsValid && isTouched;
-
-    console.log('isTouched: ', isTouched);
-    console.log('value is valid: ', valueIsValid);
-    console.log('inputHasError: ', inputHasError);
 
     const valueChangeHandler = (e) => {
         setValue(e.target.value);

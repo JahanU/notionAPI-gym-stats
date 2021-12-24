@@ -37,8 +37,9 @@ body {
 }
 
 .form-control.invalid input {
-  background-color: red;
-  opacity: 10%;
+  background-color: rgb(255, 201, 201);
+  opacity: 90%;
+  border-color: grey;
 }
 
 .form-control input,
