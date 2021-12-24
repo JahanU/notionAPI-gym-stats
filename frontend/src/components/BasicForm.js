@@ -66,7 +66,7 @@ const BasicForm = (props) => {
             onBlur={firstNameBlurHandler}
             type='text'
             id='name' />
-          {inputFirstNameHasError && <p>Please enter a valid name, {firstName} too short</p>}
+          {inputFirstNameHasError && <p className='error-text'>Please enter a valid name, {firstName} too short</p>}
         </div>
         <div className={sNameInputClass}>
           <label htmlFor='name'>Last Name</label>
@@ -74,7 +74,7 @@ const BasicForm = (props) => {
             onChange={secondNameChangeHandler}
             onBlur={secondNameBlurHandler}
             type='text' id='name' />
-          {inputSecondNameHasError && <p>Please enter a valid name, {secondName} too short</p>}
+          {inputSecondNameHasError && <p className='error-text'> Please enter a valid name, {secondName} too short</p>}
 
         </div>
       </div>
@@ -84,7 +84,7 @@ const BasicForm = (props) => {
           onChange={emailChangeHandler}
           onBlur={emailBlurHandler}
           type='text' id='name' />
-        {inputEmailHasError && <p>Please enter a email, {email} is not valid</p>}
+        {inputEmailHasError && <p className='error-text'>Please enter a email, {email} is not valid</p>}
 
       </div>
       <div className='form-actions'>
