@@ -25,7 +25,8 @@ export default function StatsInput() {
     const [exercises, setExercises] = useState(pushExercises);
     const [selectedExercise, setSelectedExercise] = useState(pushExercises[0]);
     const [weight, setWeight] = useState(0);
-    const [notionCode, setNotionCode] = useState('');
+    const [notionCode, setNotionCode] = useState(null);
+    const [error, setError] = useState(false);
 
     const onGymLabelhandler = (input) => {
         setSelectedGymLabel(input.target.value);
@@ -44,24 +45,46 @@ export default function StatsInput() {
     }
 
     const onNotionCodeHandler = (input) => {
-        console.log(input.target.value);
         setNotionCode(input.target.value);
     }
 
     const submitStats = (e) => {
         e.preventDefault();
-        console.log(selectedGymLabel, selectedExercise, weight);
+        console.log(selectedGymLabel, selectedExercise, weight, notionCode);
 
-        let body = {
+        let payload = {
             tag: selectedGymLabel,
             exercise: selectedExercise,
             weight: weight,
             notionCode: notionCode
         }
+
+        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+
+        try {
+            const resp = fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!resp.ok) {
+                throw new Error('Request failed!');
+            }
+
+            setError(false);
+        }
+        catch (err) {
+            setError(true);
+        }
+
     }
 
     return (
         <form className='form-control' onSubmit={submitStats}>
+            {error && <span className='error-text'>Error with request</span>}
             <div className='control-group'>
                 <label>Gym Day</label>
                 <select onChange={onGymLabelhandler}>
@@ -81,13 +104,13 @@ export default function StatsInput() {
                 <input type="number" onChange={onWeightHandler} />
 
                 <label htmlFor="notion">Notion Code</label>
-                <input onChange={onNotionCodeHandler} />
+                <input type="number" onChange={onNotionCodeHandler} />
 
-                <div className='form-actions'>
-                    <button>Submit</button>
-                </div>
             </div>
 
+            <div className='form-actions'>
+                <button>Submit</button>
+            </div>
 
         </form>
     );
