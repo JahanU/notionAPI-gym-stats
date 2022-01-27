@@ -48,7 +48,7 @@ export default function StatsInput() {
         setNotionCode(input.target.value);
     }
 
-    const submitStats = (e) => {
+    const submitStats = async (e) => {
         e.preventDefault();
         console.log(selectedGymLabel, selectedExercise, weight, notionCode);
 
@@ -59,10 +59,13 @@ export default function StatsInput() {
             notionCode: notionCode
         }
 
-        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        console.log(payload);
+
+        // const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        const url = 'http://localhost:4000/post-gym-stats';
 
         try {
-            const resp = fetch(url, {
+            const resp = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -71,6 +74,7 @@ export default function StatsInput() {
             });
 
             if (!resp.ok) {
+                console.log(resp);
                 throw new Error('Request failed!');
             }
 

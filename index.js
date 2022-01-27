@@ -11,6 +11,7 @@ const { addStatsRow } = require("./notion")
 const { filterInputs } = require("./helperFunctions")
 
 app.use('/', (req, res, next) => {
+  console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
   if (req.body.notionCode !== process.env.NOTION_CODE.toString()) {
     const error = new Error('Notion Code is incorrect');
     res.status(404);
@@ -36,7 +37,8 @@ app.post('/post-gym-stats', async (req, res, next) => {
       weight,
       tag
     });
-    res.send(req.body);
+
+    res.sendStatus(200);
   } catch (error) {
     res.send(error);
   }
