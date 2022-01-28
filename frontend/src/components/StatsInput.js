@@ -27,8 +27,10 @@ export default function StatsInput() {
     const [weight, setWeight] = useState(0);
     const [notionCode, setNotionCode] = useState(null);
     const [error, setError] = useState(false);
+    const [message, setMessage] = useState('');
 
     const onGymLabelhandler = (input) => {
+        setMessage('');
         setSelectedGymLabel(input.target.value);
 
         if (map.has(input.target.value)) { // Update list of excersises based on label
@@ -37,10 +39,12 @@ export default function StatsInput() {
     }
 
     const onExcerciseHandler = (input) => {
+        setMessage('');
         setSelectedExercise(input.target.value);
     }
 
     const onWeightHandler = (input) => {
+        setMessage('');
         setWeight(input.target.value);
     }
 
@@ -61,8 +65,8 @@ export default function StatsInput() {
 
         console.log(payload);
 
-        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
-        // const url = 'http://localhost:4000/post-gym-stats';
+        // const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        const url = 'http://localhost:4000/post-gym-stats';
 
         try {
             const resp = await fetch(url, {
@@ -74,21 +78,23 @@ export default function StatsInput() {
             });
 
             if (!resp.ok) {
-                console.log(resp);
                 throw new Error('Request failed!');
             }
 
             setError(false);
+            setMessage('Successfully submitted stats!');
+
         }
         catch (err) {
             setError(true);
         }
-
     }
 
     return (
         <form className='form-control' onSubmit={submitStats}>
             {error && <span className='error-text'>Error with request</span>}
+            {message && <span className='success-text'>{message}</span>}
+
             <div className='control-group'>
                 <label>Gym Day</label>
                 <select onChange={onGymLabelhandler}>

@@ -117,3 +117,9 @@ button:disabled:active {
   justify-content: center;
   display: flex;
 }
+
+.success-text {
+  color: green;
+  justify-content: center;
+  display: flex;
+}
