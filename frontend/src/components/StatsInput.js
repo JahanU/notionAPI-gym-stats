@@ -61,8 +61,8 @@ export default function StatsInput() {
 
         console.log(payload);
 
-        // const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
-        const url = 'http://localhost:4000/post-gym-stats';
+        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        // const url = 'http://localhost:4000/post-gym-stats';
 
         try {
             const resp = await fetch(url, {
