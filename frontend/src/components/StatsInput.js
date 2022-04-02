@@ -5,9 +5,9 @@ let gymLabels = ['Push', 'Pull', 'Legs'];
 
 let pushExercises = ['Bench Press', 'Incline Bench', 'Decline Bench',
     'Decline Flys', 'Cable Flys', 'Machine Flys',
-    'Overhead Press', 'Dips', 'Seated Dips'];
+    'Overhead Press', 'Dips', 'Seated Dips', 'Cable Push Down'];
 
-let pullExercises = ['Lat Pull Down', 'Seated Row', 'Deadlift', 'Pull Ups'];
+let pullExercises = ['Lat Pull Down', 'Seated Row', 'Deadlift', 'Sumo Lift', 'Pull Ups'];
 
 let legExercises = ['Calf Press', 'Calves Raises', 'Leg Curl',
     'Leg Extension', 'Leg Press', 'Squat'
