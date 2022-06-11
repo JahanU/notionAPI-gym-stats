@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/post-gym-stats', async (req, res, next) => {
-  // { exercise: 'Bench Press', weight: '90', tag: 'Push' }
-  let { exercise, weight, tag } = req.body; // All Strings 
+  // { exercise: 'Bench Press', weight: '90', reps: '5', tag: 'Push' }
+  let { exercise, weight, reps, tag, comment } = req.body; // All Strings 
 
   [exercise, weight, tag] = filterInputs(exercise, weight, tag);
 
@@ -35,7 +35,9 @@ app.post('/post-gym-stats', async (req, res, next) => {
     await addStatsRow({
       exercise,
       weight,
-      tag
+      reps,
+      tag,
+      comment
     });
 
     res.sendStatus(200);
