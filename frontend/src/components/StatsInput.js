@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 
 
-let gymLabels = ['Push', 'Pull', 'Legs'];
+let gymLabels = [
+    'Push', 'Pull', 'Legs'
+];
 
-let pushExercises = ['Bench Press', 'Incline Bench', 'Decline Bench',
+let pushExercises = [
+    'Bench Press', 'Incline Bench', 'Decline Bench',
     'Decline Flys', 'Cable Flys', 'Machine Flys',
-    'Overhead Press', 'Dips', 'Seated Dips', 'Cable Push Down'];
+    'Overhead Press', 'Dips', 'Seated Dips', 'Cable Push Down'
+];
 
-let pullExercises = ['Lat Pull Down', 'Seated Row', 'Deadlift', 'Sumo Lift', 'Pull Ups'];
+let pullExercises = [
+    'Lat Pull Down', 'Seated Row', 'Deadlift', 'Sumo Lift', 'Pull Ups'
+];
 
-let legExercises = ['Calf Press', 'Calves Raises', 'Leg Curl',
+let legExercises = [
+    'Calf Press', 'Calves Raises', 'Leg Curl',
     'Leg Extension', 'Leg Press', 'Squat'
 ];
 
@@ -25,6 +32,8 @@ export default function StatsInput() {
     const [exercises, setExercises] = useState(pushExercises);
     const [selectedExercise, setSelectedExercise] = useState(pushExercises[0]);
     const [weight, setWeight] = useState(0);
+    const [rep, setRep] = useState(0);
+    const [comment, setComment] = useState(0);
     const [notionCode, setNotionCode] = useState(null);
     const [error, setError] = useState(false);
     const [message, setMessage] = useState('');
@@ -48,6 +57,16 @@ export default function StatsInput() {
         setWeight(input.target.value);
     }
 
+    const onRepHandler = (input) => {
+        setMessage('');
+        setRep(input.target.value);
+    }
+
+    const onCommentHandler = (input) => {
+        setMessage('');
+        setComment(input.target.value);
+    }
+
     const onNotionCodeHandler = (input) => {
         setNotionCode(input.target.value);
     }
@@ -60,13 +79,15 @@ export default function StatsInput() {
             tag: selectedGymLabel,
             exercise: selectedExercise,
             weight: weight,
+            reps: rep,
+            comment: comment,
             notionCode: notionCode
         }
 
         console.log(payload);
 
-        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
-        // const url = 'http://localhost:4000/post-gym-stats';
+        // const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        const url = 'http://localhost:4000/post-gym-stats';
 
         try {
             const resp = await fetch(url, {
@@ -76,14 +97,11 @@ export default function StatsInput() {
                 },
                 body: JSON.stringify(payload)
             });
-
             if (!resp.ok) {
                 throw new Error('Request failed!');
             }
-
             setError(false);
             setMessage('Successfully submitted stats!');
-
         }
         catch (err) {
             setError(true);
@@ -110,12 +128,18 @@ export default function StatsInput() {
                     )}
                 </select>
 
+
                 <label htmlFor="weight">Weight</label>
                 <input type="number" onChange={onWeightHandler} />
 
+                <label htmlFor="reps">Reps</label>
+                <input type="number" onChange={onRepHandler} />
+
+                <label htmlFor="comment">Comments</label>
+                <input onChange={onCommentHandler} />
+
                 <label htmlFor="notion">Notion Code</label>
                 <input type="number" onChange={onNotionCodeHandler} />
-
             </div>
 
             <div className='form-actions'>

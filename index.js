@@ -62,3 +62,34 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log('starting server at..', PORT));
 
+// title: [
+//   {
+//     type: 'text',
+//     text: [Object],
+//     annotations: [Object],
+//     plain_text: 'Stats',
+//     href: null
+//   }
+// ],
+// properties: {
+//   Reps: { id: 'INpJ', name: 'Reps', type: 'number', number: [Object] },
+
+//   Comments: { id: 'WF<d', name: 'Comments', type: 'rich_text', rich_text: {} },
+
+//   Tags: {
+//     id: 'ihHP',
+//     name: 'Tags',
+//     type: 'multi_select',
+//     multi_select: [Object]
+//   },
+
+//   Dates: { id: 'sLg@', name: 'Dates', type: 'date', date: {} },
+
+//   'Weight (1S * 10R)': {
+//     id: '|=UC',
+//     name: 'Weight (1S * 10R)',
+//     type: 'rich_text',
+//     rich_text: {}
+//   },
+
+//   Exercises: { id: 'title', name: 'Exercises', type: 'title', title: {} }

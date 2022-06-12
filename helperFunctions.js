@@ -1,4 +1,4 @@
-function filterInputs(exercise, weight, tag) {
+function filterInputs(exercise, weight, tag, reps) {
     exercise = filterCamelCase(exercise);
     weight = filterWeight(weight);
     tag = filterCamelCase(tag);

@@ -29,6 +29,8 @@ body {
 .form-control input,
 .form-control label {
   display: block;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-control label {
@@ -96,6 +98,7 @@ button:disabled:active {
   cursor: not-allowed;
 }
 
+/* button */
 .form-actions {
   width: 100%;
   display: flex;
