@@ -7,17 +7,21 @@ let gymLabels = [
 
 let pushExercises = [
     'Bench Press', 'Incline Bench', 'Decline Bench',
-    'Decline Flys', 'Cable Flys', 'Machine Flys',
-    'Overhead Press', 'Dips', 'Seated Dips', 'Cable Push Down'
+    'Machine Flys', 'Decline Flys', 'Cable Flys',
+    'Overhead Press', 'Lateral Raises',
+    'Dips', 'Seated Dips', 'Cable Push Down'
 ];
 
 let pullExercises = [
-    'Lat Pull Down', 'Seated Row', 'Deadlift', 'Sumo Lift', 'Pull Ups'
+    'Pull Ups', 'Lat Pull Down',
+    'Seated Row',
+    'Deadlift', 'Sumo Lift',
 ];
 
 let legExercises = [
-    'Calf Press', 'Calves Raises', 'Leg Curl',
-    'Leg Extension', 'Leg Press', 'Squat'
+    'Leg Press', 'Squat',
+    'Leg Curl', 'Leg Extension',
+    'Calf Press', 'Calves Raises',
 ];
 
 let map = new Map();
