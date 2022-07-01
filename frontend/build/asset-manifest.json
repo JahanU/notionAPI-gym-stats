@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/notionAPI-gym-stats/static/css/main.75af421b.chunk.css",
-    "main.js": "/notionAPI-gym-stats/static/js/main.d9ae44d1.chunk.js",
-    "main.js.map": "/notionAPI-gym-stats/static/js/main.d9ae44d1.chunk.js.map",
+    "main.js": "/notionAPI-gym-stats/static/js/main.175e070a.chunk.js",
+    "main.js.map": "/notionAPI-gym-stats/static/js/main.175e070a.chunk.js.map",
     "runtime-main.js": "/notionAPI-gym-stats/static/js/runtime-main.9e0c2671.js",
     "runtime-main.js.map": "/notionAPI-gym-stats/static/js/runtime-main.9e0c2671.js.map",
     "static/js/2.974906e7.chunk.js": "/notionAPI-gym-stats/static/js/2.974906e7.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.9e0c2671.js",
     "static/js/2.974906e7.chunk.js",
     "static/css/main.75af421b.chunk.css",
-    "static/js/main.d9ae44d1.chunk.js"
+    "static/js/main.175e070a.chunk.js"
   ]
 }
