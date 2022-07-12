@@ -43,11 +43,16 @@ export default function StatsInput() {
     const [message, setMessage] = useState('');
 
     const onGymLabelhandler = (input) => {
+        const label = input.target.value;
         setMessage('');
-        setSelectedGymLabel(input.target.value);
+        setSelectedGymLabel(label);
 
-        if (map.has(input.target.value)) { // Update list of excersises based on label
-            setExercises(map.get(input.target.value));
+        console.log('!!')
+        console.log(label);
+
+        if (map.has(label)) { // Update list of excersises based on label
+            setExercises(map.get(label));
+            setSelectedExercise(map.get(label)[0]);
         }
     }
 
@@ -118,7 +123,7 @@ export default function StatsInput() {
             {message && <span className='success-text'>{message}</span>}
 
             <div className='control-group'>
-                <label>Gym Day</label>
+                <label>Gym Day: {selectedGymLabel}</label>
                 <select onChange={onGymLabelhandler}>
                     {gymLabels.map(label =>
                         <option key={label}>{label}</option>
