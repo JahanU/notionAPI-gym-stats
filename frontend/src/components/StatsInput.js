@@ -6,8 +6,9 @@ let gymLabels = [
 ];
 
 let pushExercises = [
-    'Bench Press', 'Incline Bench', 'Decline Bench',
-    'Machine Flys', 'Decline Flys', 'Cable Flys',
+    'Bench Press', 'Incline Bench',
+    'Dumbell Press', 'Incline Dumbell Press',
+    'Machine Flys', 'Cable Flys', 'Decline Flys',
     'Overhead Press', 'Lateral Raises',
     'Dips', 'Seated Dips', 'Cable Push Down'
 ];
@@ -95,8 +96,8 @@ export default function StatsInput() {
 
         console.log(payload);
 
-        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
-        // const url = 'http://localhost:4000/post-gym-stats';
+        // const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        const url = 'http://localhost:4000/post-gym-stats';
 
         try {
             const resp = await fetch(url, {

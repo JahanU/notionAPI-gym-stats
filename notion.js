@@ -6,7 +6,7 @@ const DATABASE_ID = process.env.NOTION_DATABASE_ID
 
 // Ids of columns within the database
 const NOTION_EXERCISE_ID = 'title'; // Exercises: { id: 'title', type: 'title', title: {} }
-const NOTION_WEIGHT_ID = '|=UC';    // 'Weight': { id: '|=UC', type: 'rich_text', rich_text: {} },
+const NOTION_WEIGHT_ID = '|=UC';    // 'Weight': { id: '|=UC',  type: 'number', number: [Object] },
 const NOTION_REPS_ID = 'INpJ';      // Reps: { id: 'INpJ', name: 'Reps', type: 'number', number: [Object] },
 const NOTION_COMMENTS_ID = 'WF<d';  // Comments: { id: 'WF<d', name: 'Comments', type: 'rich_text', rich_text: {} },
 const NOTION_TAGS_ID = 'ihHP';      // Tags: { id: 'ihHP', type: 'multi_select', multi_select: [Object] },
@@ -32,15 +32,6 @@ function addStatsRow({ exercise, weight, reps, tag, comment }) {
             }
           ]
         },
-        [NOTION_WEIGHT_ID]: {
-          rich_text: [
-            {
-              "text": {
-                "content": weight
-              }
-            }
-          ]
-        },
 
         [NOTION_COMMENTS_ID]: {
           rich_text: [
@@ -52,9 +43,10 @@ function addStatsRow({ exercise, weight, reps, tag, comment }) {
           ]
         },
 
-        // [NOTION_REPS_ID]: {
-        //   number: reps
-        // },
+        [NOTION_WEIGHT_ID]: {
+          number: parseInt(weight),
+        },
+
 
         [NOTION_REPS_ID]: {
           number: parseInt(reps),
@@ -73,7 +65,7 @@ function addStatsRow({ exercise, weight, reps, tag, comment }) {
           }
         },
       },
-    }).then((res) => {
+    }).then(() => {
       console.log('Row added!');
     })
   } catch (error) {

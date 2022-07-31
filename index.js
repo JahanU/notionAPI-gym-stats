@@ -12,6 +12,7 @@ const { filterInputs } = require("./helperFunctions")
 
 app.use('/', (req, res, next) => {
   console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
+
   if (req.body.notionCode !== process.env.NOTION_CODE.toString()) {
     const error = new Error('Notion Code is incorrect');
     res.status(404);
@@ -25,7 +26,9 @@ app.get('/', (req, res) => {
   res.send("Hello World, Landing page!");
 });
 
+
 app.post('/post-gym-stats', async (req, res, next) => {
+
   // { exercise: 'Bench Press', weight: '90', reps: '5', tag: 'Push' }
   let { exercise, weight, reps, tag, comment } = req.body; // All Strings 
 
