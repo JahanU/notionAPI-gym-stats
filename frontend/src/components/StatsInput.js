@@ -116,8 +116,6 @@ export default function StatsInput() {
 
     return (
         <form className='form-control' onSubmit={submitStats}>
-            {error && <span className='error-text'>Error with request</span>}
-            {message && <span className='success-text'>{message}</span>}
 
             <div className='control-group'>
                 <label>Gym Day: {selectedGymLabel}</label>
@@ -151,6 +149,10 @@ export default function StatsInput() {
             <div className='form-actions'>
                 <button>Submit</button>
             </div>
+
+            <br></br>
+            {error && <span className='error-text'>Error with request</span>}
+            {message && <span className='success-text'>{message}</span>}
 
         </form>
     );
