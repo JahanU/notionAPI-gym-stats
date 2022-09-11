@@ -47,10 +47,6 @@ export default function StatsInput() {
         const label = input.target.value;
         setMessage('');
         setSelectedGymLabel(label);
-
-        console.log('!!')
-        console.log(label);
-
         if (map.has(label)) { // Update list of excersises based on label
             setExercises(map.get(label));
             setSelectedExercise(map.get(label)[0]);
@@ -96,8 +92,8 @@ export default function StatsInput() {
 
         console.log(payload);
 
-        // const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
-        const url = 'http://localhost:4000/post-gym-stats';
+        const url = 'https://notionapi-gym-stats.herokuapp.com/post-gym-stats';
+        // const url = 'http://localhost:4000/post-gym-stats';
 
         try {
             const resp = await fetch(url, {

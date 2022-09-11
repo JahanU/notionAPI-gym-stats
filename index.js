@@ -13,11 +13,11 @@ const { filterInputs } = require("./helperFunctions")
 app.use('/', (req, res, next) => {
   console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
 
-  if (req.body.notionCode !== process.env.NOTION_CODE.toString()) {
-    const error = new Error('Notion Code is incorrect');
-    res.status(404);
-    return next(error);
-  }
+  // if (req.body.notionCode !== process.env.NOTION_CODE.toString()) {
+  //   const error = new Error('Notion Code is incorrect');
+  //   res.status(404);
+  //   return next(error);
+  // }
   next();
 });
 
